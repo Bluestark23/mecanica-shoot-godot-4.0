@@ -1,0 +1,104 @@
+[gd_scene load_steps=15 format=3 uid="uid://ducvwi0bd4h1d"]
+
+[ext_resource type="Texture2D" uid="uid://b454r8l068kbg" path="res://Sprites/Ice/IceVFX 1 Repeatable.png" id="1_kd7wl"]
+[ext_resource type="Script" path="res://Ice.gd" id="1_wauhl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3vl7"]
+atlas = ExtResource("1_kd7wl")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ntem"]
+atlas = ExtResource("1_kd7wl")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2bgjc"]
+atlas = ExtResource("1_kd7wl")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngb17"]
+atlas = ExtResource("1_kd7wl")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrabj"]
+atlas = ExtResource("1_kd7wl")
+region = Rect2(192, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6wif"]
+atlas = ExtResource("1_kd7wl")
+region = Rect2(240, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3l6p"]
+atlas = ExtResource("1_kd7wl")
+region = Rect2(288, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_un8p3"]
+atlas = ExtResource("1_kd7wl")
+region = Rect2(336, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1y3p3"]
+atlas = ExtResource("1_kd7wl")
+region = Rect2(384, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7odt"]
+atlas = ExtResource("1_kd7wl")
+region = Rect2(432, 0, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8uml5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3vl7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ntem")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2bgjc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ngb17")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrabj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6wif")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3l6p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_un8p3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1y3p3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7odt")
+}],
+"loop": true,
+"name": &"Displaced",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lobh3"]
+size = Vector2(11, 4)
+
+[node name="Ice" type="StaticBody2D"]
+script = ExtResource("1_wauhl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 5.68434e-14)
+scale = Vector2(0.5625, 0.46875)
+sprite_frames = SubResource("SpriteFrames_8uml5")
+animation = &"Displaced"
+frame_progress = 0.497678
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_lobh3")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

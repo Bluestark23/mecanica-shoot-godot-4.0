@@ -1,0 +1,140 @@
+[gd_scene load_steps=21 format=3 uid="uid://c83fruyql2a0b"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_6nunt"]
+[ext_resource type="Texture2D" uid="uid://diaos1ac0i17n" path="res://Sprites/Witch/B_witch_run.png" id="2_hf8tw"]
+[ext_resource type="PackedScene" uid="uid://ducvwi0bd4h1d" path="res://Ice.tscn" id="2_n2lep"]
+[ext_resource type="Texture2D" uid="uid://bnvr1adgt2eos" path="res://Sprites/Witch/B_witch_idle.png" id="3_6yury"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_87p8c"]
+atlas = ExtResource("2_hf8tw")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oorjo"]
+atlas = ExtResource("2_hf8tw")
+region = Rect2(0, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ls18b"]
+atlas = ExtResource("2_hf8tw")
+region = Rect2(0, 96, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_au21b"]
+atlas = ExtResource("2_hf8tw")
+region = Rect2(0, 144, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdmxs"]
+atlas = ExtResource("2_hf8tw")
+region = Rect2(0, 192, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7u486"]
+atlas = ExtResource("2_hf8tw")
+region = Rect2(0, 240, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aj3dh"]
+atlas = ExtResource("2_hf8tw")
+region = Rect2(0, 288, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dpgh"]
+atlas = ExtResource("2_hf8tw")
+region = Rect2(0, 336, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xx5g"]
+atlas = ExtResource("3_6yury")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6t2hg"]
+atlas = ExtResource("3_6yury")
+region = Rect2(0, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nd8te"]
+atlas = ExtResource("3_6yury")
+region = Rect2(0, 96, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhqcm"]
+atlas = ExtResource("3_6yury")
+region = Rect2(0, 144, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2h6n"]
+atlas = ExtResource("3_6yury")
+region = Rect2(0, 192, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7xyw"]
+atlas = ExtResource("3_6yury")
+region = Rect2(0, 240, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0yuim"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_87p8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oorjo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ls18b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_au21b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdmxs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7u486")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aj3dh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dpgh")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5xx5g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6t2hg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nd8te")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhqcm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2h6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7xyw")
+}],
+"loop": true,
+"name": &"static",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xi6v1"]
+size = Vector2(30, 92)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_6nunt")
+ice = ExtResource("2_n2lep")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1.90735e-06, -3.8147e-06)
+scale = Vector2(3.28125, 2.98958)
+sprite_frames = SubResource("SpriteFrames_0yuim")
+animation = &"run"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_xi6v1")
+
+[node name="Shoot" type="Node2D" parent="."]
+
+[node name="Direction" type="Node2D" parent="Shoot"]
+position = Vector2(41, 13)
